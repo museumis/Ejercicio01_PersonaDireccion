@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Preparaticos para utilizacion de Fechas -->
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<entry key="java.time.LocalDate" value="Clases.ConversorFechas">
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="direccionCasa" class="Clases.Direccion">
+		<constructor-arg name="numero" value="11"></constructor-arg>
+		<constructor-arg name="calle" value="C//Sol"></constructor-arg>
+		<constructor-arg name="ciudad" value="Plasencia"></constructor-arg>
+		<constructor-arg name="pais" value="España"></constructor-arg>
+	</bean>
+
+	<bean id="persona1" class="Clases.Persona">
+		<property name="nombre" value="Anakin"></property>
+		<property name="apellido" value="SkyWalker"></property>
+		<property name="fecha_nacimiento" value="2001-12-30"></property>
+		<property name="telefono" value="927404040"></property>
+		<property name="email" value="laFuerza@gmail.com"></property>
+		<property name="direccion" ref="direccionCasa"></property>
+	</bean>
+
+
+</beans>
